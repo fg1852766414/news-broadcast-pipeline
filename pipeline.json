@@ -1,0 +1,317 @@
+{
+  "pipeline": {
+    "name": "6-Agent Video Production Workflow",
+    "version": "1.0.0",
+    "description": "Orchestrates 6 agents to produce a news broadcast video from Horizon data"
+  },
+
+  "phases": {
+    "phase1": {
+      "name": "Parallel Content Processing",
+      "agents": ["agent1", "agent2", "agent3"],
+      "run_mode": "parallel",
+      "description": "Process Horizon data, generate broadcast scripts, and set up Remotion video"
+    },
+    "phase2": {
+      "name": "Aesthetic Review Loop",
+      "agents": ["agent3", "agent4"],
+      "run_mode": "loop",
+      "max_iterations": 3,
+      "description": "Review Remotion video quality, loop back with feedback if needed"
+    },
+    "phase3": {
+      "name": "Composite Script Development",
+      "agents": ["agent5"],
+      "run_mode": "sequential",
+      "description": "Synthesize all outputs into a complete composite video script"
+    },
+    "phase4": {
+      "name": "Final Review",
+      "agents": ["agent5", "agent6"],
+      "run_mode": "loop",
+      "max_iterations": 0,
+      "description": "Final review of the complete video, can loop until passing"
+    }
+  },
+
+  "agents": {
+    "agent1": {
+      "name": "Horizon Content Processor",
+      "domain": "D:\\claude_demo\\Horizon",
+      "role": "Process enriched news data and extract structured outputs",
+      "inputs": [
+        {
+          "path": "Horizon/data/enriched/{date}.json",
+          "format": "json",
+          "description": "AI-enriched news items from Horizon aggregation system"
+        },
+        {
+          "path": "Horizon/data/summaries/horizon-{date}-{lang}.md",
+          "format": "markdown",
+          "description": "AI-generated daily summaries"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "Horizon/output/daily-digest-{date}.md",
+          "format": "markdown",
+          "consumed_by": ["agent2", "agent3", "agent5"]
+        },
+        {
+          "path": "Horizon/output/simplified-{date}.json",
+          "format": "json",
+          "consumed_by": ["agent3", "agent5"]
+        },
+        {
+          "path": "Horizon/output/category-statistics-{date}.md",
+          "format": "markdown",
+          "consumed_by": ["agent5"]
+        },
+        {
+          "path": "Horizon/output/ai-score-ranking-{date}.md",
+          "format": "markdown",
+          "consumed_by": ["agent2", "agent5"]
+        }
+      ]
+    },
+    "agent2": {
+      "name": "Broadcast Engine Processor",
+      "domain": "D:\\claude_demo\\broadcast-engine",
+      "role": "Generate broadcast scripts from Horizon enriched news data",
+      "inputs": [
+        {
+          "path": "Horizon/data/enriched/{date}.json",
+          "format": "json",
+          "source": "Horizon / Agent 1"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "broadcast-engine/output/{date}-script.md",
+          "format": "markdown",
+          "consumed_by": ["agent3", "agent5"]
+        },
+        {
+          "path": "broadcast-engine/output/{date}-script-en.md",
+          "format": "markdown",
+          "consumed_by": ["agent3", "agent5"]
+        }
+      ]
+    },
+    "agent3": {
+      "name": "Remotion Video Producer",
+      "domain": "D:\\claude_demo\\remotion-product",
+      "role": "Create Remotion video with seendance effects using news data",
+      "inputs": [
+        {
+          "path": "Horizon/output/simplified-{date}.json",
+          "format": "json",
+          "source": "Agent 1"
+        },
+        {
+          "path": "broadcast-engine/output/{date}-script.md",
+          "format": "markdown",
+          "source": "Agent 2"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "remotion-product/output/broadcast.mp4",
+          "format": "video/mp4",
+          "consumed_by": ["agent4"]
+        }
+      ],
+      "review_feedback_input": {
+        "path": "remotion-product/review-report.md",
+        "format": "markdown",
+        "source": "Agent 4"
+      }
+    },
+    "agent4": {
+      "name": "Aesthetic Reviewer",
+      "role": "Review video quality and provide aesthetic feedback",
+      "inputs": [
+        {
+          "path": "remotion-product/output/broadcast.mp4",
+          "format": "video/mp4",
+          "source": "Agent 3"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "remotion-product/review-report.md",
+          "format": "markdown",
+          "consumed_by": ["agent3"]
+        }
+      ]
+    },
+    "agent5": {
+      "name": "Composite Script Developer",
+      "domain": "D:\\claude_demo\\remotion-product\\composite-script",
+      "role": "Synthesize all inputs into a final composite video script",
+      "inputs": [
+        {
+          "path": "Horizon/output/",
+          "format": "mixed",
+          "source": "Agent 1"
+        },
+        {
+          "path": "broadcast-engine/output/",
+          "format": "mixed",
+          "source": "Agent 2"
+        },
+        {
+          "path": "remotion-product/src/",
+          "format": "typescript",
+          "source": "Agent 3"
+        },
+        {
+          "path": "remotion-product/review-report.md",
+          "format": "markdown",
+          "source": "Agent 4"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "remotion-product/composite-script/composite-video.tsx",
+          "format": "typescript",
+          "consumed_by": ["agent6"]
+        },
+        {
+          "path": "remotion-product/composite-script/CompositeBroadcast.tsx",
+          "format": "typescript",
+          "consumed_by": ["agent6"]
+        }
+      ]
+    },
+    "agent6": {
+      "name": "Final Reviewer",
+      "role": "Final comprehensive review of the complete video",
+      "inputs": [
+        {
+          "path": "Horizon/output/",
+          "format": "mixed",
+          "source": "Agent 1"
+        },
+        {
+          "path": "broadcast-engine/output/",
+          "format": "mixed",
+          "source": "Agent 2"
+        },
+        {
+          "path": "remotion-product/output/",
+          "format": "mixed",
+          "source": "Agent 3"
+        },
+        {
+          "path": "remotion-product/composite-script/",
+          "format": "typescript",
+          "source": "Agent 5"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "final-output/",
+          "format": "directory",
+          "consumed_by": ["user"]
+        },
+        {
+          "path": "reports/final-review-*.md",
+          "format": "markdown",
+          "consumed_by": ["user"]
+        }
+      ]
+    }
+  },
+
+  "data_contracts": {
+    "horizon_item": {
+      "description": "A single enriched news item from Horizon",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "source_type": { "type": "string", "enum": ["hackernews", "rss", "reddit", "github", "twitter"] },
+        "title": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "content": { "type": "string" },
+        "author": { "type": "string" },
+        "published_at": { "type": "string", "format": "datetime" },
+        "ai_score": { "type": "number", "minimum": 0, "maximum": 10 },
+        "ai_summary": { "type": "string" },
+        "ai_tags": { "type": "array", "items": { "type": "string" } },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "title_zh": { "type": "string" },
+            "title_en": { "type": "string" },
+            "detailed_summary_zh": { "type": "string" },
+            "detailed_summary_en": { "type": "string" },
+            "sources": { "type": "array" }
+          }
+        }
+      },
+      "required": ["id", "source_type", "title", "url", "ai_score"]
+    },
+    "horizon_enriched_file": {
+      "description": "The enriched JSON file containing multiple news items",
+      "type": "array",
+      "items": { "$ref": "#/data_contracts/horizon_item" }
+    },
+    "broadcast_script": {
+      "description": "A generated broadcast script in Markdown format",
+      "type": "string",
+      "format": "markdown",
+      "metadata": {
+        "date": { "type": "string" },
+        "language": { "type": "string", "enum": ["zh", "en"] },
+        "item_count": { "type": "integer" },
+        "estimated_duration_seconds": { "type": "integer" }
+      }
+    },
+    "remotion_video": {
+      "description": "Rendered video output from Remotion",
+      "type": "file",
+      "format": "video/mp4",
+      "resolution": { "width": 1920, "height": 1080 },
+      "fps": 30,
+      "codec": "h264"
+    },
+    "review_report": {
+      "description": "Aesthetic review report for the video",
+      "type": "object",
+      "properties": {
+        "score": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "issues": { "type": "array", "items": { "type": "string" } },
+        "suggestions": { "type": "array", "items": { "type": "string" } },
+        "verdict": { "type": "string", "enum": ["PASS", "FAIL"] }
+      },
+      "required": ["score", "verdict"]
+    },
+    "composite_script": {
+      "description": "Final composite video script that integrates all pipeline outputs",
+      "type": "typescript",
+      "components": {
+        "CompositeRoot": "Entry point with Composition registration",
+        "CompositeBroadcast": "Master component sequencing all video sections"
+      },
+      "inputs": {
+        "horizon_data": "Simplified Horizon enriched data JSON",
+        "broadcast_script": "Generated broadcast script text",
+        "remotion_components": "Existing Remotion React components"
+      }
+    }
+  },
+
+  "output_structure": {
+    "final_output": {
+      "path": "D:\\claude_demo\\final-output",
+      "structure": {
+        "horizon-output": "Processed Horizon data products",
+        "broadcast-output": "Generated broadcast scripts",
+        "video-output": "Rendered Remotion videos",
+        "composite-script": "Final composite video script",
+        "reports": "All review reports"
+      }
+    }
+  }
+}

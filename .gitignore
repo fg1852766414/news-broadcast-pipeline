@@ -1,0 +1,54 @@
+# ===== API Keys & Secrets =====
+.env
+.env.local
+*.env
+
+# ===== Dependencies =====
+**/node_modules/
+**/.venv/
+**/.pytest_cache/
+**/__pycache__/
+**/*.pyc
+
+# ===== Build Outputs =====
+**/dist/
+**/build/
+**/.next/
+
+# ===== Video Outputs =====
+**/output/*.mp4
+**/output/frames*.png
+**/output/*.webm
+**/output/*.mov
+**/final-output/*.mp4
+
+# ===== Chrome Temp =====
+.chrome-temp/
+
+# ===== Editors & OS =====
+**/.DS_Store
+**/Thumbs.db
+**/*.swp
+**/.vscode/
+
+# ===== Python =====
+**/.mypy_cache/
+**/.ruff_cache/
+**/.coverage
+
+# ===== Horizon specific =====
+Horizon/data/enriched/
+Horizon/data/scraped_cache/
+
+# ===== broadcast-engine =====
+broadcast-engine/output/
+
+# ===== Remotion =====
+remotion-product/node_modules/
+remotion-product/build/
+remotion-product/public/
+
+# ===== Aesthetic Reviewer =====
+# .env is already above
+aesthetic-reviewer/output/story-*-vision.json
+aesthetic-reviewer/output/*.raw.txt

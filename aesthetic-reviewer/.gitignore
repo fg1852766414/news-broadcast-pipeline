@@ -1,0 +1,3 @@
+scripts/.env
+output/story-*-vision.json
+output/*.raw.txt

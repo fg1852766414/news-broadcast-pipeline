@@ -1,0 +1,138 @@
+{
+  "workflow": {
+    "name": "6-Agent Video Production Pipeline",
+    "description": "Multi-agent workflow for producing news broadcast videos from Horizon data",
+    "version": "1.0.0"
+  },
+
+  "phases": [
+    {
+      "id": "phase1",
+      "name": "Parallel Content Processing",
+      "description": "Launch Agent 1, 2, and 3 in parallel using worktree isolation",
+      "agents": ["agent1", "agent2", "agent3"],
+      "parallel": true,
+      "entry_condition": "Always (start of pipeline)"
+    },
+    {
+      "id": "phase2",
+      "name": "Aesthetic Review Loop",
+      "description": "Agent 4 reviews Agent 3's output. On FAIL, loop back to Agent 3 (max 3 iterations).",
+      "agents": ["agent4"],
+      "loop": {
+        "back_to": "agent3",
+        "max_iterations": 3
+      },
+      "entry_condition": "Agent 1, 2, 3 all complete successfully"
+    },
+    {
+      "id": "phase3",
+      "name": "Composite Script Development",
+      "description": "Agent 5 synthesizes all Phase 1+2 outputs into a complete video script",
+      "agents": ["agent5"],
+      "entry_condition": "Phase 2 passes (review verdict = PASS)"
+    },
+    {
+      "id": "phase4",
+      "name": "Final Review",
+      "description": "Agent 6 performs final comprehensive review. On FAIL, loop back to Agent 5.",
+      "agents": ["agent6"],
+      "loop": {
+        "back_to": "agent5",
+        "max_iterations": 0
+      },
+      "entry_condition": "Agent 5 completes",
+      "output": "Generate final output to D:\\claude_demo\\final-output\\"
+    }
+  ],
+
+  "agents": {
+    "agent1": {
+      "type": "general-purpose",
+      "description": "Horizon content processing",
+      "directory": "D:\\claude_demo\\Horizon",
+      "task": "Process enriched news data and generate structured outputs",
+      "output_dir": "Horizon/output/",
+      "outputs_expected": [
+        "daily-digest-{date}.md",
+        "simplified-{date}.json",
+        "category-statistics-{date}.md",
+        "ai-score-ranking-{date}.md"
+      ]
+    },
+    "agent2": {
+      "type": "general-purpose",
+      "description": "Broadcast Engine content processing",
+      "directory": "D:\\claude_demo\\broadcast-engine",
+      "task": "Generate broadcast scripts from Horizon enriched data",
+      "output_dir": "broadcast-engine/output/",
+      "outputs_expected": [
+        "{date}-script.md",
+        "{date}-script-en.md"
+      ]
+    },
+    "agent3": {
+      "type": "general-purpose",
+      "description": "Remotion video production with seendance effects",
+      "directory": "D:\\claude_demo\\remotion-product",
+      "task": "Create Remotion video using news data and seendance text animations",
+      "output_dir": "remotion-product/output/",
+      "outputs_expected": [
+        "broadcast.mp4"
+      ],
+      "accepts_feedback_from": "agent4"
+    },
+    "agent4": {
+      "type": "general-purpose",
+      "description": "Aesthetic review of Remotion video",
+      "directory": "D:\\claude_demo\\remotion-product",
+      "task": "Review video quality and aesthetics",
+      "output_dir": "remotion-product/",
+      "outputs_expected": [
+        "review-report.md"
+      ],
+      "agents_to_review": "agent3"
+    },
+    "agent5": {
+      "type": "general-purpose",
+      "description": "Composite video script development",
+      "directory": "D:\\claude_demo\\remotion-product\\composite-script",
+      "task": "Synthesize all inputs into a final composite video script",
+      "output_dir": "remotion-product/composite-script/",
+      "outputs_expected": [
+        "composite-video.tsx",
+        "CompositeBroadcast.tsx"
+      ]
+    },
+    "agent6": {
+      "type": "general-purpose",
+      "description": "Final comprehensive video review",
+      "directory": "D:\\claude_demo",
+      "task": "Final review of complete integrated video",
+      "output_dir": "reports/",
+      "outputs_expected": [
+        "final-review-*.md"
+      ],
+      "final_output": "D:\\claude_demo\\final-output\\"
+    }
+  },
+
+  "data_flow": {
+    "agent1_to_agent2": "Horizon/data/enriched/{date}.json",
+    "agent1_to_agent3": "Horizon/output/simplified-{date}.json",
+    "agent2_to_agent3": "broadcast-engine/output/{date}-script.md",
+    "agent3_to_agent4": "remotion-product/output/broadcast.mp4",
+    "agent4_to_agent3": "remotion-product/review-report.md",
+    "agent1_to_agent5": "Horizon/output/",
+    "agent2_to_agent5": "broadcast-engine/output/",
+    "agent3_to_agent5": "remotion-product/src/",
+    "agent4_to_agent5": "remotion-product/review-report.md",
+    "agent5_to_agent6": "remotion-product/composite-script/"
+  },
+
+  "error_handling": {
+    "any_agent_failure": "Record error and ask user whether to continue",
+    "phase2_max_iterations_reached": "Terminate pipeline and report failure",
+    "phase4_loop": "Continue until PASS verdict (no max iterations)"
+  }
+}

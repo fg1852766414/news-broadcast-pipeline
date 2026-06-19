@@ -1,0 +1,72 @@
+{
+  "timestamp": "2026-06-18T13:43:54",
+  "manifest": {
+    "totalFrames": 3090,
+    "totalDuration": 103.0,
+    "segments": 34
+  },
+  "expected": {
+    "totalFrames": 2940,
+    "totalDuration": 98.0
+  },
+  "inputs": [
+    {
+      "name": "story-0.mp4",
+      "info": {
+        "exists": true,
+        "path": "D:\\claude_demo\\remotion-product\\output\\story-0.mp4",
+        "size_mb": 2.11,
+        "duration": null
+      }
+    },
+    {
+      "name": "story-1.mp4",
+      "info": {
+        "exists": false,
+        "path": "D:\\claude_demo\\remotion-product\\output\\story-1.mp4"
+      }
+    },
+    {
+      "name": "story-2.mp4",
+      "info": {
+        "exists": false,
+        "path": "D:\\claude_demo\\remotion-product\\output\\story-2.mp4"
+      }
+    },
+    {
+      "name": "story-3.mp4",
+      "info": {
+        "exists": false,
+        "path": "D:\\claude_demo\\remotion-product\\output\\story-3.mp4"
+      }
+    },
+    {
+      "name": "story-4.mp4",
+      "info": {
+        "exists": false,
+        "path": "D:\\claude_demo\\remotion-product\\output\\story-4.mp4"
+      }
+    },
+    {
+      "name": "story-5.mp4",
+      "info": {
+        "exists": false,
+        "path": "D:\\claude_demo\\remotion-product\\output\\story-5.mp4"
+      }
+    }
+  ],
+  "validation": {
+    "allFilesExist": false,
+    "allDurationsMatch": false,
+    "ffmpegAvailable": false
+  },
+  "issues": [
+    "story-0.mp4: 分辨率 NonexNone, 预期 1920x1080",
+    "story-1.mp4: 文件不存在",
+    "story-2.mp4: 文件不存在",
+    "story-3.mp4: 文件不存在",
+    "story-4.mp4: 文件不存在",
+    "story-5.mp4: 文件不存在"
+  ],
+  "verdict": "FAIL"
+}

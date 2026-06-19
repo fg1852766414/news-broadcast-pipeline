@@ -17,10 +17,13 @@
 
 # ===== Video Outputs =====
 **/output/*.mp4
-**/output/frames*.png
 **/output/*.webm
 **/output/*.mov
+**/output/screenshots/
 **/final-output/*.mp4
+
+# ===== Miscellaneous =====
+raw.bin
 
 # ===== Chrome Temp =====
 .chrome-temp/

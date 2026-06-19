@@ -28,10 +28,12 @@ remotion-product (React components → MP4 video)
 ### Pipeline Orchestration
 
 The 6-agent workflow (defined in `.claude/workflow-config.json` and `scripts/orchestrator.sh`):
-1. **Phase 1 [parallel]** — Agent 1 (Horizon), Agent 2 (broadcast-engine), Agent 3 (remotion) run simultaneously
+1. **Phase 1 [parallel]** -- Agent 1 (Horizon), Agent 2 (broadcast-engine + TTS voiceover), Agent 3 (remotion) run simultaneously
 2. **Phase 2 [loop]** — Agent 4 reviews Agent 3's video, max 3 iterations back to Agent 3
 3. **Phase 3** — Agent 5 synthesizes all outputs into a composite video script
-4. **Phase 4 [loop]** — Agent 6 does final review, loops back to Agent 5 until passing
+4. **Phase 4 [loop]** -- Agent 6 does final review, loops back to Agent 5 until passing
+
+TTS voiceover: `scripts/generate_voiceover.py` reads `manifest.json` segments -> Edge TTS -> per-segment MP3 -> concatenated `voiceover.mp3`. Runs as part of Agent 2. Remotion plays via `<Audio src={staticFile("voiceover.mp3")}>`. Per-story audio (`story-{n}.mp3`) generated for `renderStory` prop.
 
 ## Key Commands
 
@@ -61,6 +63,14 @@ uv run broadcast --provider anthropic --model claude-sonnet-4-20250514  # Use An
 cd remotion-product
 npx remotion studio                      # Start Remotion Studio (localhost:6123)
 npm run build                            # Render video to output/broadcast.mp4
+```
+
+### TTS Voiceover
+```bash
+python scripts/generate_voiceover.py                    # Generate full 162s voiceover
+python scripts/generate_voiceover.py --rate +20%        # Faster narration
+python scripts/generate_voiceover.py --voice zh-CN-YunyangNeural  # Male news anchor voice
+python scripts/generate_voiceover.py --dry-run          # Preview segments
 ```
 
 ### Data Bridge & Pipeline

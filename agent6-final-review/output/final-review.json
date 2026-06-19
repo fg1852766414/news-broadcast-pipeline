@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-06-18T13:45:00",
+  "pipelineRun": "20260618_134500",
+  "stages": {
+    "assembly": {
+      "status": "FAIL",
+      "report": "D:\\claude_demo\\agent5-video-assembler\\output\\assembly-report.json"
+    },
+    "visionAnalysis": {
+      "status": "SKIP",
+      "totalScore": null,
+      "typography": null,
+      "layout": null,
+      "content_richness": null,
+      "scene_effects": null,
+      "color_brand": null,
+      "narrative_flow": null
+    },
+    "completeness": {
+      "existing": 8,
+      "total": 14,
+      "missing": [
+        "Remotion: story-1.mp4",
+        "Remotion: story-2.mp4",
+        "Remotion: story-3.mp4",
+        "Remotion: story-4.mp4",
+        "Remotion: story-5.mp4",
+        "Agent 5: broadcast-final.mp4"
+      ]
+    }
+  },
+  "verdict": "FAIL",
+  "reason": "Assembly 验证失败; 缺失 6 个产物",
+  "thresholds": {
+    "minScore": 7.0,
+    "minPreflightPass": 8
+  }
+}

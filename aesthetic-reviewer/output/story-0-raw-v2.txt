@@ -1,0 +1,48 @@
+```json
+{
+  "scores": {
+    "design_variance": 5,
+    "motion_intensity": 6,
+    "visual_density": 6,
+    "total": 5.7
+  },
+  "issues": [
+    {
+      "timestamp": 0,
+      "severity": "low",
+      "category": "design",
+      "title": "设计元素较为单一",
+      "description": "全片仅以黑色背景搭配文字和简单流程图，缺乏更多层次丰富的视觉元素，整体设计偏单调"
+    },
+    {
+      "timestamp": 0,
+      "severity": "low",
+      "category": "motion",
+      "title": "转场类型单一",
+      "description": "所有页面切换仅使用淡入淡出这一种转场效果，缺少转场的多样性变化"
+    }
+  ],
+  "highlights": [
+    "遵循苹果设计规范，使用纯黑色背景+苹果蓝强调色，排版干净纯净",
+    "单页信息密度适中，文字对比度高，可读性很强",
+    "动画节奏合适，淡入转场流畅自然，没有卡顿或拖沓问题",
+    "顶栏和底栏都设置了统一的品牌元素，品牌一致性做得好"
+  ],
+  "preflight": {
+    "opening_3s_catchy": true,
+    "apple_design_consistent": true,
+    "no_ai_defaults": true,
+    "animation_natural": true,
+    "transition_diverse": false,
+    "branding_present": true,
+    "ending_climactic": true,
+    "text_readable": true
+  },
+  "suggestions": [
+    "新增滑动、缩放等不同转场效果，丰富转场多样性，提升页面切换的视觉新鲜感",
+    "给每个资讯模块搭配简单的对应图标，增加设计细节，避免视觉单调",
+    "如果是完整的6条资讯速览，补充剩余5条资讯内容，完善视频整体结构"
+  ],
+  "summary": "这是一段风格简洁干净的科技资讯演示视频，符合苹果设计系统的一致性要求，文字阅读体验好，动画流畅自然。整体设计偏保守简洁，缺少多样化的设计元素和转场变化，属于中规中矩的资讯演示内容。"
+}
+```

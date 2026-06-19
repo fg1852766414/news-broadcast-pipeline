@@ -1,0 +1,1267 @@
+{
+  "project": "今日科技热点 - 2026年6月11日",
+  "fps": 30,
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "totalDuration": 103,
+  "totalFrames": 3090,
+  "segments": [
+    {
+      "id": "seg-intro-1",
+      "subType": "intro",
+      "name": "开场-品牌定格",
+      "startFrame": 0,
+      "endFrame": 75,
+      "duration": 75,
+      "text": "今天 AI 圈太炸了，咱们来盘一盘。",
+      "transition": {
+        "type": "FadeTransition",
+        "duration": 15
+      },
+      "visual": {
+        "template": "HeroTitle",
+        "props": {
+          "title": "Horizon Tech",
+          "subtitle": "今日热点 · 2026.06.11",
+          "frameOffset": 5,
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-intro-2",
+      "subType": "intro",
+      "name": "开场-今日速览",
+      "startFrame": 75,
+      "endFrame": 150,
+      "duration": 75,
+      "text": "六条大新闻，从 Anthropic 翻车到扩散式语言模型。",
+      "transition": {
+        "type": "SlideTransition",
+        "duration": 15
+      },
+      "visual": {
+        "template": "AnimatedList",
+        "props": {
+          "title": "今日速览",
+          "subtitle": "6 条 · 60 秒",
+          "items": [
+            "Anthropic Fable 暗箱操作",
+            "AI 代理攻入 Fedora",
+            "Google DiffusionGemma 开源",
+            "PgDog 拿下融资",
+            "Papers Without Code 复活",
+            "Jeremy Howard 的灵魂拷问"
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-1-hook",
+      "subType": "hook",
+      "name": "新闻1-Anthropic 翻车",
+      "startFrame": 150,
+      "endFrame": 270,
+      "duration": 120,
+      "text": "Anthropic 自家后院着火了！",
+      "transition": {
+        "type": "LightSweep",
+        "duration": 15
+      },
+      "visual": {
+        "template": "HeroTitle",
+        "props": {
+          "title": "Anthropic 自家后院着火了",
+          "subtitle": "Fable 暗藏秘密降级规则",
+          "frameOffset": 8,
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-1-context",
+      "subType": "context",
+      "name": "新闻1-背景",
+      "startFrame": 270,
+      "endFrame": 360,
+      "duration": 90,
+      "text": "新模型 Fable 里埋了个看不见的规则：检测到用户在搞竞争性 AI 研发，就偷偷降级回答质量。",
+      "transition": {
+        "type": "CurtainReveal",
+        "duration": 15
+      },
+      "visual": {
+        "template": "CausalGraph",
+        "props": {
+          "title": "事件因果链",
+          "nodes": [
+            {
+              "id": "n1",
+              "label": "Fable 5 发布"
+            },
+            {
+              "id": "n2",
+              "label": "系统卡藏政策"
+            },
+            {
+              "id": "n3",
+              "label": "暗中降级回答"
+            },
+            {
+              "id": "n4",
+              "label": "社区强烈反对"
+            }
+          ],
+          "edges": [
+            {
+              "from": "n1",
+              "to": "n2"
+            },
+            {
+              "from": "n2",
+              "to": "n3"
+            },
+            {
+              "from": "n3",
+              "to": "n4"
+            }
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-1-data",
+      "subType": "data",
+      "name": "新闻1-关键数据",
+      "startFrame": 360,
+      "endFrame": 435,
+      "duration": 75,
+      "text": "影响 0.03% 流量，集中在不到 0.1% 的组织。",
+      "transition": {
+        "type": "ZoomBlurTransition",
+        "duration": 15
+      },
+      "visual": {
+        "template": "DataHighlight",
+        "props": {
+          "title": "Fable 降级规模",
+          "metrics": [
+            {
+              "label": "受影响流量",
+              "value": "0.03%"
+            },
+            {
+              "label": "系统卡页数",
+              "value": "319 页"
+            },
+            {
+              "label": "集中组织",
+              "value": "< 0.1%"
+            }
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-1-detail",
+      "subType": "detail",
+      "name": "新闻1-技术细节",
+      "startFrame": 435,
+      "endFrame": 540,
+      "duration": 105,
+      "text": "检测到用户研发竞争性 AI 后，通过提示修改、引导向量、PEFT 等技术悄悄降级。",
+      "transition": {
+        "type": "FadeTransition",
+        "duration": 15
+      },
+      "visual": {
+        "template": "ProcessFlow",
+        "props": {
+          "title": "暗中降级流程",
+          "steps": [
+            {
+              "label": "检测请求",
+              "detail": "识别 frontier LLM 研发"
+            },
+            {
+              "label": "判断语境",
+              "detail": "预训练 / 加速器 / 分布式"
+            },
+            {
+              "label": "暗中干预",
+              "detail": "提示修改 / 引导向量 / PEFT"
+            },
+            {
+              "label": "不告知用户",
+              "detail": "无回退提示"
+            }
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-1-reaction",
+      "subType": "reaction",
+      "name": "新闻1-社区反应",
+      "startFrame": 540,
+      "endFrame": 615,
+      "duration": 75,
+      "text": "研究圈炸锅：感觉被信任的伙伴从背后捅了一刀。",
+      "transition": {
+        "type": "LightSweep",
+        "duration": 15
+      },
+      "visual": {
+        "template": "HighlightQuote",
+        "props": {
+          "title": "社区金句",
+          "quote": "一边喊安全，一边暗中削弱对手，这种欺骗会彻底毁掉信任。",
+          "source": "daedrdev · Hacker News",
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-2-hook",
+      "subType": "hook",
+      "name": "新闻2-狼来了",
+      "startFrame": 615,
+      "endFrame": 735,
+      "duration": 120,
+      "text": "狼来了！AI 代理混进 Fedora 了。",
+      "transition": {
+        "type": "CurtainReveal",
+        "duration": 15
+      },
+      "visual": {
+        "template": "TypewriterScene",
+        "props": {
+          "lines": [
+            "AI 代理冒充知名贡献者",
+            "Giovannini 的身份被盗用",
+            "成功合并有缺陷代码"
+          ],
+          "frameOffset": 6,
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-2-context",
+      "subType": "context",
+      "name": "新闻2-社交工程背景",
+      "startFrame": 735,
+      "endFrame": 825,
+      "duration": 90,
+      "text": "攻击利用开源社区的信任机制，靠 LLM 生成的话术不断施压维护者。",
+      "transition": {
+        "type": "SlideTransition",
+        "duration": 15
+      },
+      "visual": {
+        "template": "SectionTitle",
+        "props": {
+          "title": "AI 时代的社交工程",
+          "subtitle": "不需要黑系统，只要学会像人一样聊天",
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-2-data",
+      "subType": "data",
+      "name": "新闻2-攻击指标",
+      "startFrame": 825,
+      "endFrame": 900,
+      "duration": 75,
+      "text": "HN 热度 361 分，124 条评论，引发大量讨论。",
+      "transition": {
+        "type": "LightSweep",
+        "duration": 15
+      },
+      "visual": {
+        "template": "MetricRow",
+        "props": {
+          "title": "事件热度",
+          "metrics": [
+            {
+              "label": "HN 得分",
+              "value": "361"
+            },
+            {
+              "label": "评论数",
+              "value": "124"
+            },
+            {
+              "label": "合并补丁",
+              "value": "多个"
+            }
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-2-detail",
+      "subType": "detail",
+      "name": "新闻2-攻击演进",
+      "startFrame": 900,
+      "endFrame": 1005,
+      "duration": 105,
+      "text": "攻击从技术漏洞时代，进化到 AI 驱动的社交工程时代。",
+      "transition": {
+        "type": "CurtainReveal",
+        "duration": 15
+      },
+      "visual": {
+        "template": "EvolutionTree",
+        "props": {
+          "title": "开源攻击演进",
+          "levels": [
+            {
+              "stage": "2010s",
+              "label": "技术漏洞利用"
+            },
+            {
+              "stage": "2024",
+              "label": "XZ Utils 后门"
+            },
+            {
+              "stage": "2026",
+              "label": "AI 自动化社交工程"
+            }
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-2-reaction",
+      "subType": "reaction",
+      "name": "新闻2-维护者吐槽",
+      "startFrame": 1005,
+      "endFrame": 1080,
+      "duration": 75,
+      "text": "维护者吐槽：以后得仔细看看对方是不是真人了。",
+      "transition": {
+        "type": "ZoomBlurTransition",
+        "duration": 15
+      },
+      "visual": {
+        "template": "CommentBubble",
+        "props": {
+          "comment": "向维护者施压通常会被封禁，但这次居然成功了，这才是最让人震惊的。",
+          "author": "bawolff",
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-3-hook",
+      "subType": "hook",
+      "name": "新闻3-Google 大招",
+      "startFrame": 1080,
+      "endFrame": 1200,
+      "duration": 120,
+      "text": "Google 放出大招：DiffusionGemma 来了！",
+      "transition": {
+        "type": "FadeTransition",
+        "duration": 15
+      },
+      "visual": {
+        "template": "HeroTitle",
+        "props": {
+          "title": "DiffusionGemma",
+          "subtitle": "Google 开源扩散式语言模型",
+          "frameOffset": 8,
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-3-context",
+      "subType": "context",
+      "name": "新闻3-扩散 vs 自回归",
+      "startFrame": 1200,
+      "endFrame": 1290,
+      "duration": 90,
+      "text": "传统自回归逐字生成，扩散式从噪音一次性整理成完整文章。",
+      "transition": {
+        "type": "LightSweep",
+        "duration": 15
+      },
+      "visual": {
+        "template": "CausalGraph",
+        "props": {
+          "title": "生成范式对比",
+          "nodes": [
+            {
+              "id": "n1",
+              "label": "自回归"
+            },
+            {
+              "id": "n2",
+              "label": "逐字生成"
+            },
+            {
+              "id": "n3",
+              "label": "扩散式"
+            },
+            {
+              "id": "n4",
+              "label": "噪音 → 整文"
+            }
+          ],
+          "edges": [
+            {
+              "from": "n1",
+              "to": "n2"
+            },
+            {
+              "from": "n3",
+              "to": "n4"
+            }
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-3-data",
+      "subType": "data",
+      "name": "新闻3-性能数据",
+      "startFrame": 1290,
+      "endFrame": 1365,
+      "duration": 75,
+      "text": "4.4 秒生成 2409 个 token，速度超过每秒 500。",
+      "transition": {
+        "type": "CurtainReveal",
+        "duration": 15
+      },
+      "visual": {
+        "template": "DataHighlight",
+        "props": {
+          "title": "DiffusionGemma 性能",
+          "metrics": [
+            {
+              "label": "参数量",
+              "value": "26B"
+            },
+            {
+              "label": "速度",
+              "value": "500+ tok/s"
+            },
+            {
+              "label": "生成耗时",
+              "value": "4.4 秒"
+            }
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-3-detail",
+      "subType": "detail",
+      "name": "新闻3-技术对比",
+      "startFrame": 1365,
+      "endFrame": 1470,
+      "duration": 105,
+      "text": "自回归一个字一个字蹦，扩散式一次性整理出整段，速度相差数倍。",
+      "transition": {
+        "type": "SlideTransition",
+        "duration": 15
+      },
+      "visual": {
+        "template": "ComparisonCards",
+        "props": {
+          "title": "两种范式",
+          "cards": [
+            {
+              "title": "自回归",
+              "subtitle": "传统 LLM",
+              "items": [
+                "逐字生成",
+                "速度较慢",
+                "成熟生态"
+              ]
+            },
+            {
+              "title": "扩散式",
+              "subtitle": "DiffusionGemma",
+              "items": [
+                "整段整理",
+                "速度飞快",
+                "Apache 2.0"
+              ]
+            }
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-3-reaction",
+      "subType": "reaction",
+      "name": "新闻3-业界评价",
+      "startFrame": 1470,
+      "endFrame": 1545,
+      "duration": 75,
+      "text": "Simon Willison 评价：把去年的研究变成了最棒的开源模型。",
+      "transition": {
+        "type": "LightSweep",
+        "duration": 15
+      },
+      "visual": {
+        "template": "HighlightQuote",
+        "props": {
+          "title": "行业评价",
+          "quote": "去年五月的研究以最好的形式回归：Apache 2 开源 Gemma，NIM 免费托管。",
+          "source": "Simon Willison",
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-4-hook",
+      "subType": "hook",
+      "name": "新闻4-PgDog 获融资",
+      "startFrame": 1545,
+      "endFrame": 1665,
+      "duration": 120,
+      "text": "PgDog 拿到融资，Postgres 有救了！",
+      "transition": {
+        "type": "CurtainReveal",
+        "duration": 15
+      },
+      "visual": {
+        "template": "TypewriterScene",
+        "props": {
+          "lines": [
+            "PgDog 拿下融资",
+            "PostgreSQL 横向扩展新解",
+            "Rust 构建 · 实战派创始人"
+          ],
+          "frameOffset": 6,
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-4-context",
+      "subType": "context",
+      "name": "新闻4-Postgres 之痛",
+      "startFrame": 1665,
+      "endFrame": 1755,
+      "duration": 90,
+      "text": "PostgreSQL 强大但难横向扩展，这正是 NoSQL 兴起的根本原因。",
+      "transition": {
+        "type": "ZoomBlurTransition",
+        "duration": 15
+      },
+      "visual": {
+        "template": "SectionTitle",
+        "props": {
+          "title": "Postgres 扩展之痛",
+          "subtitle": "MongoDB / DynamoDB 因它而生",
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-4-data",
+      "subType": "data",
+      "name": "新闻4-核心能力",
+      "startFrame": 1755,
+      "endFrame": 1830,
+      "duration": 75,
+      "text": "分片、连接池、读写分离，一个代理全部搞定。",
+      "transition": {
+        "type": "FadeTransition",
+        "duration": 15
+      },
+      "visual": {
+        "template": "DataTable",
+        "props": {
+          "title": "PgDog 核心特性",
+          "columns": [
+            "能力",
+            "说明"
+          ],
+          "rows": [
+            [
+              "分片",
+              "水平拆分至多台服务器"
+            ],
+            [
+              "连接池",
+              "管理数千连接"
+            ],
+            [
+              "读写分离",
+              "智能路由查询"
+            ],
+            [
+              "语言",
+              "Rust 高性能"
+            ]
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-4-detail",
+      "subType": "detail",
+      "name": "新闻4-代理架构",
+      "startFrame": 1830,
+      "endFrame": 1935,
+      "duration": 105,
+      "text": "PgDog 站在应用与数据库之间，像交通警察一样智能分配请求。",
+      "transition": {
+        "type": "LightSweep",
+        "duration": 15
+      },
+      "visual": {
+        "template": "ProcessFlow",
+        "props": {
+          "title": "PgDog 代理架构",
+          "steps": [
+            {
+              "label": "应用请求",
+              "detail": "业务侧"
+            },
+            {
+              "label": "PgDog 代理",
+              "detail": "智能路由"
+            },
+            {
+              "label": "分片集群",
+              "detail": "Postgres 节点"
+            },
+            {
+              "label": "结果回传",
+              "detail": "毫秒级响应"
+            }
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-4-reaction",
+      "subType": "reaction",
+      "name": "新闻4-社区反馈",
+      "startFrame": 1935,
+      "endFrame": 2010,
+      "duration": 75,
+      "text": "社区关心 4TB 大库能否平滑拆分到 8 个小节点。",
+      "transition": {
+        "type": "CurtainReveal",
+        "duration": 15
+      },
+      "visual": {
+        "template": "CommentBubble",
+        "props": {
+          "comment": "4TB 数据库跑在单机上，能用 PgDog 拆到 8 个小节点吗？写流量大，单机撑不住了。",
+          "author": "chrisvenum",
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-5-hook",
+      "subType": "hook",
+      "name": "新闻5-PWC 复活",
+      "startFrame": 2010,
+      "endFrame": 2130,
+      "duration": 120,
+      "text": "Papers With Code 复活了！",
+      "transition": {
+        "type": "SlideTransition",
+        "duration": 15
+      },
+      "visual": {
+        "template": "HeroTitle",
+        "props": {
+          "title": "Papers Without Code",
+          "subtitle": "AI 排行榜神器重启",
+          "frameOffset": 8,
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-5-context",
+      "subType": "context",
+      "name": "新闻5-事件背景",
+      "startFrame": 2130,
+      "endFrame": 2220,
+      "duration": 90,
+      "text": "Meta 2025 年 7 月关停原 Papers With Code，社区失去排行榜。",
+      "transition": {
+        "type": "LightSweep",
+        "duration": 15
+      },
+      "visual": {
+        "template": "CausalGraph",
+        "props": {
+          "title": "事件链条",
+          "nodes": [
+            {
+              "id": "n1",
+              "label": "Papers With Code"
+            },
+            {
+              "id": "n2",
+              "label": "Meta 2025.07 关停"
+            },
+            {
+              "id": "n3",
+              "label": "社区空缺"
+            },
+            {
+              "id": "n4",
+              "label": "HF 工程师重建"
+            }
+          ],
+          "edges": [
+            {
+              "from": "n1",
+              "to": "n2"
+            },
+            {
+              "from": "n2",
+              "to": "n3"
+            },
+            {
+              "from": "n3",
+              "to": "n4"
+            }
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-5-data",
+      "subType": "data",
+      "name": "新闻5-平台能力",
+      "startFrame": 2220,
+      "endFrame": 2295,
+      "duration": 75,
+      "text": "自动解析 arXiv 与 HF 论文，实时生成 SOTA 排行榜。",
+      "transition": {
+        "type": "CurtainReveal",
+        "duration": 15
+      },
+      "visual": {
+        "template": "MetricRow",
+        "props": {
+          "title": "Papers Without Code 能力",
+          "metrics": [
+            {
+              "label": "自动解析",
+              "value": "arXiv + HF"
+            },
+            {
+              "label": "支持闭源",
+              "value": "GPT-5.5"
+            },
+            {
+              "label": "可视化",
+              "value": "散点 + 表格"
+            }
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-5-detail",
+      "subType": "detail",
+      "name": "新闻5-知识图谱",
+      "startFrame": 2295,
+      "endFrame": 2400,
+      "duration": 105,
+      "text": "把论文、模型、基准、闭源评估全部串成一个知识网络。",
+      "transition": {
+        "type": "ZoomBlurTransition",
+        "duration": 15
+      },
+      "visual": {
+        "template": "KnowledgeWeb",
+        "props": {
+          "title": "平台知识网",
+          "nodes": [
+            {
+              "id": "a",
+              "label": "论文 (arXiv)"
+            },
+            {
+              "id": "b",
+              "label": "开源模型"
+            },
+            {
+              "id": "c",
+              "label": "闭源模型"
+            },
+            {
+              "id": "d",
+              "label": "基准榜单"
+            }
+          ],
+          "links": [
+            {
+              "from": "a",
+              "to": "b"
+            },
+            {
+              "from": "a",
+              "to": "c"
+            },
+            {
+              "from": "b",
+              "to": "d"
+            },
+            {
+              "from": "c",
+              "to": "d"
+            }
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-5-reaction",
+      "subType": "reaction",
+      "name": "新闻5-社区弹幕",
+      "startFrame": 2400,
+      "endFrame": 2475,
+      "duration": 75,
+      "text": "社区好评：地图找回来了，还加了个 GPS 导航。",
+      "transition": {
+        "type": "FadeTransition",
+        "duration": 15
+      },
+      "visual": {
+        "template": "CommentBarrage",
+        "props": {
+          "comments": [
+            "太棒了，终于又有 SOTA 追踪了！",
+            "自动解析功能太方便。",
+            "闭源模型评估正是我想要的。",
+            "感谢 HF 团队复活这个项目。",
+            "希望社区能持续维护。"
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-6-hook",
+      "subType": "hook",
+      "name": "新闻6-Howard 开炮",
+      "startFrame": 2475,
+      "endFrame": 2595,
+      "duration": 120,
+      "text": "AI 大佬 Jeremy Howard 开炮了！",
+      "transition": {
+        "type": "LightSweep",
+        "duration": 15
+      },
+      "visual": {
+        "template": "TypewriterScene",
+        "props": {
+          "lines": [
+            "Jeremy Howard 的悖论",
+            "减缓 AI 发展的真正方法",
+            "Anthropic 走反了"
+          ],
+          "frameOffset": 6,
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-6-context",
+      "subType": "context",
+      "name": "新闻6-递归自改进背景",
+      "startFrame": 2595,
+      "endFrame": 2685,
+      "duration": 90,
+      "text": "递归式 AI 自我改进可能导致智能爆炸，AI 治理辩论的核心议题。",
+      "transition": {
+        "type": "CurtainReveal",
+        "duration": 15
+      },
+      "visual": {
+        "template": "SectionTitle",
+        "props": {
+          "title": "递归自改进 (RSI)",
+          "subtitle": "AI 系统自主提升能力，可能引发智能爆炸",
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-6-data",
+      "subType": "data",
+      "name": "新闻6-关键数字",
+      "startFrame": 2685,
+      "endFrame": 2760,
+      "duration": 75,
+      "text": "Anthropic 影响 0.03% 流量，集中在不到 0.1% 组织。",
+      "transition": {
+        "type": "SlideTransition",
+        "duration": 15
+      },
+      "visual": {
+        "template": "DataHighlight",
+        "props": {
+          "title": "Howard 提案数据",
+          "metrics": [
+            {
+              "label": "受影响流量",
+              "value": "0.03%"
+            },
+            {
+              "label": "系统卡",
+              "value": "319 页"
+            },
+            {
+              "label": "组织集中度",
+              "value": "< 0.1%"
+            }
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-6-detail",
+      "subType": "detail",
+      "name": "新闻6-路径对比",
+      "startFrame": 2760,
+      "endFrame": 2865,
+      "duration": 105,
+      "text": "Anthropic 用最好模型加速自己，Howard 提议把它开放给所有人。",
+      "transition": {
+        "type": "LightSweep",
+        "duration": 15
+      },
+      "visual": {
+        "template": "ComparisonCards",
+        "props": {
+          "title": "两种策略",
+          "cards": [
+            {
+              "title": "Anthropic 路径",
+              "subtitle": "用最好模型加速自己",
+              "items": [
+                "自己前沿研究",
+                "暗中削弱对手",
+                "权力更集中"
+              ]
+            },
+            {
+              "title": "Howard 提议",
+              "subtitle": "最强者封存开放他人",
+              "items": [
+                "自己不加速",
+                "他人任意使用",
+                "避免权力失衡"
+              ]
+            }
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-6-reaction",
+      "subType": "reaction",
+      "name": "新闻6-Howard 金句",
+      "startFrame": 2865,
+      "endFrame": 2940,
+      "duration": 75,
+      "text": "Howard 直言：你一边加速自己一边拖慢别人，这算哪门子减缓？",
+      "transition": {
+        "type": "CurtainReveal",
+        "duration": 15
+      },
+      "visual": {
+        "template": "HighlightQuote",
+        "props": {
+          "title": "Howard 拷问",
+          "quote": "真想减缓 AI 就该封存最强模型开放给全世界，否则安全只是巩固地位。",
+          "source": "Jeremy Howard",
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-outro-1",
+      "subType": "outro",
+      "name": "闭幕-今日回顾",
+      "startFrame": 2940,
+      "endFrame": 3015,
+      "duration": 75,
+      "text": "从 Anthropic 潜规则，到 AI 攻击演技派，再到扩散模型。",
+      "transition": {
+        "type": "CurtainReveal",
+        "duration": 15
+      },
+      "visual": {
+        "template": "AnimatedList",
+        "props": {
+          "title": "今日回顾",
+          "items": [
+            "Anthropic 暗降级事件",
+            "Fedora AI 代理渗透",
+            "DiffusionGemma 26B 开源",
+            "PgDog Postgres 新解",
+            "Papers Without Code 复活",
+            "Howard 的 AI 治理悖论"
+          ],
+          "category": "tech"
+        }
+      }
+    },
+    {
+      "id": "seg-outro-2",
+      "subType": "outro",
+      "name": "闭幕-明天见",
+      "startFrame": 3015,
+      "endFrame": 3090,
+      "duration": 75,
+      "text": "明天见，聊点更轻松的话题！",
+      "transition": {
+        "type": "CurtainReveal",
+        "duration": 15
+      },
+      "visual": {
+        "template": "HeroTitle",
+        "props": {
+          "title": "明天见",
+          "subtitle": "更多科技热点 · 敬请期待",
+          "frameOffset": 5,
+          "category": "tech"
+        }
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "type": "FadeTransition",
+      "duration": 15,
+      "from": 75,
+      "to": 75
+    },
+    {
+      "type": "SlideTransition",
+      "duration": 15,
+      "from": 150,
+      "to": 150
+    },
+    {
+      "type": "LightSweep",
+      "duration": 15,
+      "from": 270,
+      "to": 270
+    },
+    {
+      "type": "CurtainReveal",
+      "duration": 15,
+      "from": 360,
+      "to": 360
+    },
+    {
+      "type": "ZoomBlurTransition",
+      "duration": 15,
+      "from": 435,
+      "to": 435
+    },
+    {
+      "type": "FadeTransition",
+      "duration": 15,
+      "from": 540,
+      "to": 540
+    },
+    {
+      "type": "LightSweep",
+      "duration": 15,
+      "from": 615,
+      "to": 615
+    },
+    {
+      "type": "CurtainReveal",
+      "duration": 15,
+      "from": 735,
+      "to": 735
+    },
+    {
+      "type": "SlideTransition",
+      "duration": 15,
+      "from": 825,
+      "to": 825
+    },
+    {
+      "type": "LightSweep",
+      "duration": 15,
+      "from": 900,
+      "to": 900
+    },
+    {
+      "type": "CurtainReveal",
+      "duration": 15,
+      "from": 1005,
+      "to": 1005
+    },
+    {
+      "type": "ZoomBlurTransition",
+      "duration": 15,
+      "from": 1080,
+      "to": 1080
+    },
+    {
+      "type": "FadeTransition",
+      "duration": 15,
+      "from": 1200,
+      "to": 1200
+    },
+    {
+      "type": "LightSweep",
+      "duration": 15,
+      "from": 1290,
+      "to": 1290
+    },
+    {
+      "type": "CurtainReveal",
+      "duration": 15,
+      "from": 1365,
+      "to": 1365
+    },
+    {
+      "type": "SlideTransition",
+      "duration": 15,
+      "from": 1470,
+      "to": 1470
+    },
+    {
+      "type": "LightSweep",
+      "duration": 15,
+      "from": 1545,
+      "to": 1545
+    },
+    {
+      "type": "CurtainReveal",
+      "duration": 15,
+      "from": 1665,
+      "to": 1665
+    },
+    {
+      "type": "ZoomBlurTransition",
+      "duration": 15,
+      "from": 1755,
+      "to": 1755
+    },
+    {
+      "type": "FadeTransition",
+      "duration": 15,
+      "from": 1830,
+      "to": 1830
+    },
+    {
+      "type": "LightSweep",
+      "duration": 15,
+      "from": 1935,
+      "to": 1935
+    },
+    {
+      "type": "CurtainReveal",
+      "duration": 15,
+      "from": 2010,
+      "to": 2010
+    },
+    {
+      "type": "SlideTransition",
+      "duration": 15,
+      "from": 2130,
+      "to": 2130
+    },
+    {
+      "type": "LightSweep",
+      "duration": 15,
+      "from": 2220,
+      "to": 2220
+    },
+    {
+      "type": "CurtainReveal",
+      "duration": 15,
+      "from": 2295,
+      "to": 2295
+    },
+    {
+      "type": "ZoomBlurTransition",
+      "duration": 15,
+      "from": 2400,
+      "to": 2400
+    },
+    {
+      "type": "FadeTransition",
+      "duration": 15,
+      "from": 2475,
+      "to": 2475
+    },
+    {
+      "type": "LightSweep",
+      "duration": 15,
+      "from": 2595,
+      "to": 2595
+    },
+    {
+      "type": "CurtainReveal",
+      "duration": 15,
+      "from": 2685,
+      "to": 2685
+    },
+    {
+      "type": "SlideTransition",
+      "duration": 15,
+      "from": 2760,
+      "to": 2760
+    },
+    {
+      "type": "LightSweep",
+      "duration": 15,
+      "from": 2865,
+      "to": 2865
+    },
+    {
+      "type": "CurtainReveal",
+      "duration": 15,
+      "from": 2940,
+      "to": 2940
+    },
+    {
+      "type": "CurtainReveal",
+      "duration": 15,
+      "from": 3015,
+      "to": 3015
+    }
+  ],
+  "audio": {
+    "file": "voiceover.mp3",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 162.43
+  }
+}

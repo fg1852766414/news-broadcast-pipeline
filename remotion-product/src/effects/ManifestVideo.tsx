@@ -11,7 +11,7 @@
  * 34 segments, 3090 frames total
  */
 import React from "react";
-import { AbsoluteFill, Sequence, useCurrentFrame, interpolate } from "remotion";
+import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, interpolate } from "remotion";
 import { CameraMotionBlur } from "@remotion/motion-blur";
 import { LightLeak } from "@remotion/light-leaks";
 
@@ -2034,6 +2034,12 @@ export const ManifestVideo: React.FC<ManifestVideoProps> = ({ renderStory }) => 
     return selected;
   }, [renderStory]);
 
+  // Select audio file based on renderStory
+  const audioFile = React.useMemo(() => {
+    if (!renderStory) return "voiceover.mp3";
+    return `story-${renderStory.storyIndex}.mp3`;
+  }, [renderStory]);
+
   // Compute total frames from filtered segments
   const totalFrames = React.useMemo(
     () => filteredSegments.reduce((sum, s) => sum + s.duration, 0),
@@ -2067,6 +2073,9 @@ export const ManifestVideo: React.FC<ManifestVideoProps> = ({ renderStory }) => 
       <AbsoluteFill style={{ backgroundColor: "#000000" }}>
         {/* z-index 0: Background decoration */}
         <BackgroundLayer />
+
+        {/* Audio: Voiceover narration — continuous track across all segments */}
+        <Audio src={staticFile(audioFile)} />
 
         {/* z-index 15: LightLeak overlay - only first 45 frames */}
         {frame < 45 && (

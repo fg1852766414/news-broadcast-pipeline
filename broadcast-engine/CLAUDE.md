@@ -26,7 +26,27 @@ Broadcast Engine 目录的内容处理项目。
 你处理的最终产物必须输出到 `broadcast-engine/output/` 目录，包含：
 
 1. `manifest.json` — 核心契约文件
-2. `voiceover.mp3` — TTS 配音音频
+2. `voiceover.mp3` — TTS 配音音频（由 `scripts/generate_voiceover.py` 自动生成）
+
+## TTS 配音生成
+
+manifest.json 生成后，运行以下脚本自动生成配音：
+
+```bash
+python scripts/generate_voiceover.py
+```
+
+该脚本会：
+1. 读取 manifest.json 每段的 `text` 字段
+2. 调用 Edge TTS (zh-CN-XiaoxiaoNeural) 逐段生成 MP3
+3. 合并为完整的 `voiceover.mp3`（~162s）
+4. 同时生成逐故事文件 `story-0.mp3` ~ `story-5.mp3`（用于逐条渲染）
+5. 输出 `voiceover-map.json` 记录每段的累积时间偏移
+6. 自动拷贝到 `remotion-product/public/` 并更新 manifest.json 的 audio 字段
+
+配音连续播放，视觉切段在配音上方进行（新闻播报标准方案）。
+
+在 pipeline orchestrator 中，TTS 作为 Agent 2 的一部分自动运行。
 
 ### manifest.json 格式
 

@@ -140,7 +140,15 @@ phase1_broadcast() {
         phase1_broadcast_fallback
     fi
 
-    success "Broadcast scripts generated in ${BE_OUTPUT}"
+    	# Generate TTS voiceover (if manifest.json exists)
+	log "Phase1-Agent2" "Generating TTS voiceover..."
+	if [ -f "${BE_OUTPUT}/manifest.json" ]; then
+		HTTP_PROXY=http://127.0.0.1:7890 HTTPS_PROXY=http://127.0.0.1:7890 		PYTHONIOENCODING=utf-8 python "${ROOT_DIR}/scripts/generate_voiceover.py" --rate +15% 			2>> "${LOG_DIR}/tts-${TIMESTAMP}.log" 			&& success "TTS voiceover generated" 			|| warn "TTS generation failed (non-critical, continuing)"
+	else
+		warn "manifest.json not found, skipping TTS (fallback mode)"
+	fi
+
+	success "Broadcast scripts generated in ${BE_OUTPUT}"
     echo "${BE_OUTPUT}"
 }
 
@@ -441,30 +449,23 @@ COMPOSITE_BROADCAST_EOF
 # ──────────────────────────────────────────────────
 
 phase4_final_review() {
-    log "Phase4-Agent6" "Starting final video review..."
+    log "Phase4-Agent6" "Starting final review..."
 
-    FINAL_REVIEW="${REPORT_DIR}/final-review-${TIMESTAMP}.md"
+    AGENT6_DIR="${ROOT_DIR}/agent6-final-review"
+    ASSEMBLED_VIDEO="${ROOT_DIR}/agent5-video-assembler/output/broadcast-final.mp4"
+    MANIFEST="${ROOT_DIR}/broadcast-engine/output/manifest.json"
+    VOICEOVER_MAP="${ROOT_DIR}/broadcast-engine/output/voiceover/voiceover-map.json"
+    REMOTION_OUTPUT="${ROOT_DIR}/remotion-product/output"
+    FINAL_OUTPUT_DIR="${ROOT_DIR}/final-output"
 
-    cat > "${FINAL_REVIEW}" << 'EOF'
-# Final Video Review
+    python "${AGENT6_DIR}/scripts/final_review.py"         --assembled-video "${ASSEMBLED_VIDEO}"         --manifest "${MANIFEST}"         --voiceover-map "${VOICEOVER_MAP}"         --input-dir "${REMOTION_OUTPUT}"         --output-dir "${AGENT6_DIR}/output"         --report-dir "${REPORT_DIR}"         --final-output-dir "${FINAL_OUTPUT_DIR}"
 
-## Review Checklist
-- [ ] Horizon content correctly integrated
-- [ ] Broadcast Engine content correctly integrated
-- [ ] Remotion video quality meets standards
-- [ ] Composite script is complete and runnable
-- [ ] Overall video is smooth and coherent
-
-## Findings
--
-
-## Verdict: [PASS / FAIL]
-EOF
-
-    echo "Final review template: ${FINAL_REVIEW}"
-    echo ""
-    read -p "Enter verdict (pass/fail): " verdict
-    echo "${verdict}"
+    local EXIT_CODE=$?
+    if [ $EXIT_CODE -eq 0 ]; then
+        echo "pass"
+    else
+        echo "fail"
+    fi
 }
 
 # ──────────────────────────────────────────────────
@@ -486,7 +487,7 @@ generate_final_output() {
     cp -r "${ROOT_DIR}/Horizon/output" "${FINAL_DIR}/horizon-output" 2>/dev/null || true
     cp -r "${ROOT_DIR}/broadcast-engine/output" "${FINAL_DIR}/broadcast-output" 2>/dev/null || true
     cp -r "${ROOT_DIR}/remotion-product/output" "${FINAL_DIR}/video-output" 2>/dev/null || true
-    cp -r "${ROOT_DIR}/remotion-product/composite-script" "${FINAL_DIR}/composite-script" 2>/dev/null || true
+    true # composite-script no longer used
     cp -r "${REPORT_DIR}" "${FINAL_DIR}/reports" 2>/dev/null || true
 
     # Generate pipeline summary
